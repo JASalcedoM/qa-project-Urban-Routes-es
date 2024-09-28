@@ -26,7 +26,7 @@
 * https://www.jetbrains.com/es-es/pycharm/download/?section=windows
   
 **Pytest**
-* Nagega a paquetes python
+* Navega a paquetes python
 * Busca "pytest" en el campo de búsqueda. Localiza el paquete en la lista dentro de los paquetes disponibles y da click en **install**
 
 **Selenium**
