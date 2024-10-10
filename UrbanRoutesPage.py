@@ -32,6 +32,7 @@ class UrbanRoutesPage:
     service_confirmation_button = (By.CSS_SELECTOR, '.smart-button-secondary')
     comfort_specs = (By.CSS_SELECTOR, '#root > div > div.workflow > div.workflow-subcontainer > div.tariff-picker.shown > div.form > div.reqs.open > div.reqs-body > div:nth-child(1) > div > div.r-sw-label')
     taxi_modal_confirmation = (By.CSS_SELECTOR, '#root > div > div.order')
+    confirmation_modal = (By.CLASS_NAME, 'order-button')
 
 
     def __init__(self, driver):
@@ -106,8 +107,9 @@ class UrbanRoutesPage:
         self.driver.find_element(*self.card_field).send_keys(card_data)
         self.driver.find_element(*self.card_field).send_keys(Keys.TAB)
 
+#MODIFICACiÓN -----------------------------------
     def get_card_number(self):
-        return self.driver.find_element(*self.card_field).get_property('value')
+        return self.driver.find_element(*self.card_confirmation).get_property('value')
 
     def filling_cvv_field(self, cvv_code):
         WebDriverWait(self.driver, 30).until(expected_conditions.presence_of_element_located(self.cvv_field))
@@ -150,3 +152,8 @@ class UrbanRoutesPage:
     def click_confirmation_service_button(self):
         WebDriverWait(self.driver,10).until(expected_conditions.element_to_be_clickable(self.service_confirmation_button))
         self.driver.find_element(*self.service_confirmation_button).click()
+#MODIFICACIÓN
+
+    def modal_is_triggered(self):
+        WebDriverWait(self.driver, 10).until(expected_conditions.visibility_of_element_located(self.confirmation_modal))
+
